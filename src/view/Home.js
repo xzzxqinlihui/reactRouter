@@ -4,8 +4,23 @@ import Logo from '../assets/logo.svg';
 
 import About from './About.js';
 import Product from './Product.js';
+import Count from "./Count.js";
+import store from "../store";
 
 export default class Home extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      Num:store.getState()
+    }
+
+    store.subscribe(()=>{
+      this.setState({
+        Num:store.getState()
+      })
+    });
+  }
+
   logout = () => {
     //  清除 sessionStorage里面的用户登录的信息
     sessionStorage.clear();
@@ -65,6 +80,10 @@ export default class Home extends Component {
               产品
             </Link>
             <br/>
+            <Link className="navbar-item" to={`${match.path}/count`}>
+              count
+            </Link>
+            <br/>
 
             <Link className="navbar-item" to={`${match.path}/cases`}>
               成功案例
@@ -79,6 +98,7 @@ export default class Home extends Component {
             <Switch>
               <Route path={`${match.path}/about`} component={About} />
               <Route path={`${match.path}/product`} component={Product} />
+              <Route path={`${match.path}/count`} component={Count} />
 
               <Route
                 render={() => {
@@ -93,7 +113,14 @@ export default class Home extends Component {
             </Switch>
           </div>
         </main>
-        <footer className="footer has-background-light" />
+        <div className="footer has-background-light" >
+        
+                版权所有@qinlihui.cn  =={this.state.Num}==
+        </div>
+
+
+
+
         {/* <Prompt message="您确定要离开吗？"></Prompt> */}
         <Prompt
           message={location => `您是否要跳转到${location.pathname}`}
