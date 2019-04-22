@@ -1,17 +1,18 @@
-import React, { Component } from 'react'
-import store ,{ActionCreator} from "../store/index.js";
+import React, { Component } from 'react';
+import {NumActionCreator as ActionCreator} from "../actions/NumAction.js";
+import store from "../store/index.js";
 
 export default class Count extends Component {
   constructor(props){
     super(props);
     this.state = {
-      Num:store.getState()  //  从state中拿到num数据
+      Num:store.getState().Num  //  从state中拿到num数据
     }
     //  当store里面的state发生变化的时候，会自动触发绑定 函数执行
     //  返回值是一个函数，此函数执行后，会取消订阅
    this.state.unsubscribe = store.subscribe(()=>{
       this.setState({
-        Num:store.getState()
+        Num:store.getState().Num
       })
     })
   }

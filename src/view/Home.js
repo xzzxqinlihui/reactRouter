@@ -6,17 +6,18 @@ import About from './About.js';
 import Product from './Product.js';
 import Count from "./Count.js";
 import store from "../store";
+import UserList from "./UserList";
 
 export default class Home extends Component {
   constructor(props){
     super(props);
     this.state = {
-      Num:store.getState()
+      Num:store.getState().Num
     }
 
     store.subscribe(()=>{
       this.setState({
-        Num:store.getState()
+        Num:store.getState().Num
       })
     });
   }
@@ -92,6 +93,9 @@ export default class Home extends Component {
             <Link className="navbar-item" to={`${match.path}/about`}>
               关于
             </Link>
+            <Link className="navbar-item" to={`${match.path}/userlist`}>
+              用户管理列表
+            </Link>
             <br/>
           </div>
           <div className=" column  has-background-primary">
@@ -99,6 +103,7 @@ export default class Home extends Component {
               <Route path={`${match.path}/about`} component={About} />
               <Route path={`${match.path}/product`} component={Product} />
               <Route path={`${match.path}/count`} component={Count} />
+              <Route path={`${match.path}/userlist`} component={UserList} />
 
               <Route
                 render={() => {

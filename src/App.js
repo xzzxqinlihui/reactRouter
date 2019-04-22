@@ -4,6 +4,8 @@ import Login from "./view/Login.js";
 import Empty from "./view/Empty.js";
 import Home from "./view/Home.js";
 
+//导入antd样式
+import "antd/dist/antd.css";
 
 export default class App extends Component {
     checkUserState(){
