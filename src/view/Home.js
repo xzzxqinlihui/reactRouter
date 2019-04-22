@@ -5,6 +5,7 @@ import Logo from '../assets/logo.svg';
 import About from './About.js';
 import Product from './Product.js';
 import Count from "./Count.js";
+import NewCount from "./NewCount.js";
 import store from "../store";
 import UserList from "./UserList";
 import UserListjsonserver from "./UserListjsonserver";
@@ -104,6 +105,9 @@ export default class Home extends Component {
             <Link className="navbar-item" to={`${match.path}/userlistthunk`}>
             UserListThunk用户管理列表
             </Link>
+            <Link className="navbar-item" to={`${match.path}/newcount`}>
+              NewCount
+            </Link>
             <br/>
           </div>
           <div className=" column  has-background-primary">
@@ -114,6 +118,7 @@ export default class Home extends Component {
               <Route path={`${match.path}/userlist`} component={UserList} />
               <Route path={`${match.path}/userlistjsonserver`} component={UserListjsonserver} />
               <Route path={`${match.path}/userlistthunk`} component={UserListThunk} />
+              <Route path={`${match.path}/newcount`} component={NewCount} />
 
               <Route
                 render={() => {
