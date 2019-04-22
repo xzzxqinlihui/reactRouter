@@ -19,4 +19,10 @@ export const UserListActionCreators = {
             payload
         }
     },
+    RemoveUserActionCreator(payload){
+        return {
+            type:UserListActionTypes.REMOVE_USER,
+            payload
+        }
+    }
 }
