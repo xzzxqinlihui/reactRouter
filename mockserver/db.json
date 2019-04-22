@@ -1,14 +1,6 @@
 {
   "userlist": [
     {
-      "Id": "100002",
-      "UserName": "崔平",
-      "Address": "通化市",
-      "Phone": "13427423561",
-      "Del": false,
-      "Remark": "调别件定什"
-    },
-    {
       "Id": "100005",
       "UserName": "龚磊",
       "Address": "铁岭市",

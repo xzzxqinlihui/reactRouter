@@ -8,6 +8,7 @@ import Count from "./Count.js";
 import store from "../store";
 import UserList from "./UserList";
 import UserListjsonserver from "./UserListjsonserver";
+import UserListThunk from "./UserListThunk";
 
 export default class Home extends Component {
   constructor(props){
@@ -100,6 +101,9 @@ export default class Home extends Component {
             <Link className="navbar-item" to={`${match.path}/userlistjsonserver`}>
               json-server用户管理列表
             </Link>
+            <Link className="navbar-item" to={`${match.path}/userlistthunk`}>
+            UserListThunk用户管理列表
+            </Link>
             <br/>
           </div>
           <div className=" column  has-background-primary">
@@ -109,6 +113,7 @@ export default class Home extends Component {
               <Route path={`${match.path}/count`} component={Count} />
               <Route path={`${match.path}/userlist`} component={UserList} />
               <Route path={`${match.path}/userlistjsonserver`} component={UserListjsonserver} />
+              <Route path={`${match.path}/userlistthunk`} component={UserListThunk} />
 
               <Route
                 render={() => {
