@@ -16,12 +16,30 @@ export const UserListActionCreators = {
       payload
     };
   },
+  LoadUserListAsyncActionCreator(){
+    return (dispatch,getState)=>{
+        axios.get("http://localhost:3009/userlist")
+        .then(res=>{
+          dispatch(this.LoadUserListActionCreator(res.data))
+        });
+    }
+  },
   AddUserActionCreator(payload) {
     return {
       type: UserListActionTypes.ADD_USER,
       payload
     };
   },
+  AddUserAsyncActionCreator(payload){
+    return (dispatch,getState)=>{
+      //  修改后台数据
+      return axios.post("http://localhost:3009/userlist",payload)
+        .then(res=>{
+          dispatch(this.AddUserActionCreator(res.data))
+        })
+      }
+  },
+
   RemoveUserActionCreator(payload) {
     return {
       type: UserListActionTypes.REMOVE_USER,
@@ -37,5 +55,25 @@ export const UserListActionCreators = {
           dispatch(UserListActionCreators.RemoveUserActionCreator(payload));
         });
     };
+  },
+  UpdateUserActionCreator(payload){
+    return {
+      type:UserListActionTypes.UPDATE_USER,
+      payload
+    }
+  },
+  UpdateUserAsyncActionCreator(payload){
+    return (dispatch,getstate)=>{
+      //  这是 修改后台数据的命令
+      return axios.put("http://localhost:3009/userlist/"+ payload.Id,payload)
+      .then(res=>{
+        //  这是  修改redux中的数据
+        // dispatch(this.UpdateUserActionCreator(payload))
+        dispatch(this.UpdateUserActionCreator(res.data))
+      })
+      .catch(()=>{
+
+      })
+    }
   }
 };
